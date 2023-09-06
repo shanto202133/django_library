@@ -1,0 +1,59 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% load customfunction %}
+{% load crispy_forms_tags %}
+
+{% block container %}
+			<div class="row">
+			    <div class="col-md-8 order-md-1 cart_info">
+			        <h4 class="mb-3 mt-3">Plz! fillup the form Before Issueing</h4>
+					{% if messages %}
+					<div class="messages">
+					    {% for message in messages %}
+					    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+					    {% endfor %}
+					</div>
+					{% endif %}
+			        <form action="" method="POST" class="needs-validation" novalidate="">
+			        	{% csrf_token %}
+			            <div class="row">
+			                <div class="col-md-6 mb-3">
+			                    {{ form.name|as_crispy_field }}
+			                </div>
+			                <div class="col-md-6 mb-3">
+			                  
+			                   	{{ form.email|as_crispy_field }}
+			                </div>
+			            </div>
+	           			<div class="mb-3">
+			                {{ form.phone|as_crispy_field }}
+			            </div>
+
+			            <div class="mb-3">
+			                {{ form.address|as_crispy_field }}
+			            </div>
+			            <div class="row">
+			                <div class="col-md-5 mb-3">
+								{{ form.division|as_crispy_field }}
+			                </div>
+			                <div class="col-md-4 mb-3">
+								{{ form.district|as_crispy_field }}
+			                </div>
+			                <div class="col-md-3 mb-3">
+			                	{{ form.zip_code|as_crispy_field }}
+			                </div>
+			            </div>
+			            <hr class="mb-4">
+			            
+			            <div class="row">
+			               
+			            </div>
+			            <hr class="mb-4">
+			            <button class="btn btn-warning btn-block" type="submit" style="margin-bottom: 20px">Continue</button>
+			        </form>
+			    </div>
+			    <div class="col-md-4 order-md-2 mb-4">
+					
+			    </div>
+			</div>
+		{% endblock %}
